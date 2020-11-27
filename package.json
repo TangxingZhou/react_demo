@@ -1,0 +1,36 @@
+{
+  "name": "react_demo",
+  "version": "1.0.0",
+  "description": "This is a demo for react.",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3"
+  },
+  "scripts": {
+    "dev": "webpack-dev-server --inline --progress --config webpack.dev.js",
+    "prod": "webpack -p --config webpack.prod.js",
+    "start": "npm run dev",
+    "build": "npm run prod",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TangxingZhou/react_demo.git"
+  },
+  "author": "Tangxing Zhou",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TangxingZhou/react_demo/issues"
+  },
+  "homepage": "https://github.com/TangxingZhou/react_demo#readme",
+  "keywords": [],
+  "devDependencies": {
+    "webpack": "^5.8.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
