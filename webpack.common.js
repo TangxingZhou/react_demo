@@ -1,11 +1,13 @@
 var webpack = require('webpack');
 var path = require('path');
-var loaders = require('./webpack.loaders');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+// var loaders = require('./webpack.loaders');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
 	entry: {
-        main: './src/index.js'
+        home:  path.resolve(__dirname, 'app/index.jsx'),
+        // main: './app/executions.jsx'
     },
     output: {
 		path: path.resolve(__dirname, 'dist'),
@@ -14,19 +16,20 @@ module.exports = {
 	//生成的sourcemap的方式
 	devtool: process.env.WEBPACK_DEVTOOL || 'source-map',
 	resolve: {
-		extensions: ['', '.js', '.jsx']
+		extensions: ['json', '.js', '.jsx']
 	},
 	module: {
-        loaders: loaders,
+        // loaders: loaders,
         rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['es2015', 'react']
-                    }
+                    loader: 'babel-loader'//,
+                    // include: path.resolve(__dirname, 'app'),
+                    // options: {
+                    //     presets: ['es2015', 'react']
+                    // }
                 }
             },
             {
@@ -63,14 +66,14 @@ module.exports = {
         ]
     },
 	plugins: [
-		new CleanWebpackPlugin(['dist']),
-		new webpack.DefinePlugin({
-	      'process.env':{
-	        'NODE_ENV': JSON.stringify('production')
-	      }
-	    }),
-		new CopyWebpackPlugin([
-			{from: './index.html'}
-		])
+		new CleanWebpackPlugin()
+		// new webpack.DefinePlugin({
+	    //   'process.env':{
+	    //     'NODE_ENV': JSON.stringify('production')
+	    //   }
+	    // }),
+		// new CopyWebpackPlugin([
+		// 	{from: './index.html'}
+		// ])
 	]
 };
